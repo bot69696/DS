@@ -9,8 +9,7 @@ head(biopsy)
 str(biopsy)
 biopsy$ID=NULL #remove the variable ID not required to create the model
 #rename the column headings
-names(biopsy)=c("thick", "usize", "ushape", "adhsn", "celsiz", "nucl",
-"chrom", "nuclus", "mit", "class")
+names(biopsy)=c("thick", "usize", "ushape", "adhsn", "celsiz", "nucl", "chrom", "nuclus", "mit", "class")
 # Data cleaning - checking for null fields
 colSums(is.na(biopsy))
 #remove NA fields
