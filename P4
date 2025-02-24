@@ -2,8 +2,7 @@ Aim: Implementing Logistic Regression
 Code:
 # Logistic regression for classification problem
 # using biopsy dataset in built-in library
-# to classify a cell as benign or malignant (cancer cell) based on lab
-observations
+# to classify a cell as benign or malignant (cancer cell) based on lab observations
 library (MASS)
 data(biopsy)
 head(biopsy)
