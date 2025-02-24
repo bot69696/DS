@@ -1,0 +1,70 @@
+(A) T-test
+Code:
+"apple sold in a day are 97"
+"H0:Number of apple sold is equal to 97"
+"H1:Number of apple sold is not equal to 97"
+"H0:mu-97"
+"H1:not H0"
+"One sample t test"
+"csv:1 sample t test_apple"
+apple<-read.csv(file.choose(),sep=",",header=T)
+summary(apple)
+t.test(apple$C1,alternative="less",mu=97)
+"We will accept Ho because the p value is greater than
+0.05"
+
+(B) Independent T test
+Code:
+"independent t test"
+"The company is assessing the different in salary of males and
+females"
+"H0: Average time is equal for 2 groups"
+"H1: Not H0"
+"csv:1 sample t test_malefemalesalary"
+Salary<-read.csv(file.choose(),sep=",",header=T)
+summary(Salary)
+t.test(Salary$MALES,Salary$FEMALES, alternative="two.side",
+var.equal=TRUE)
+"We will accept Ho because the p value is greater than
+0.05"
+
+(C) Paired T test for poverty level
+Code:
+"Paried t test"
+"A survey was done organized to check poverty level"
+"HO:Poverty is increased"
+"H1:not H0"
+"csv:paired_t_test_povertylevel"
+poverty<-read.csv(file.choose(),sep=",",header = T)
+t.test(poverty$X1,poverty$X2,alternative = "greater", paired = T)
+"We will accept Ho because the p value is greater than 0.05"
+
+(D) Paired T test
+Code:
+"paired t test"
+"MIS report:
+HO: Average time is equal (before and after)
+II1: average time (after) is less than"
+time1<-read.csv(file.choose(),sep=",",header = T)
+t.test(time1$time_before,time1$time_after, alternative = "less",
+paired = T)
+
+(E) T test for Correlation
+Code:
+"t test for correlation"
+"To study correlation between 'apptitude' and job_prof"
+"H0:there is no correlation between scores and job proficiency(??—
+0)"
+"H1: aptitude scores and job proficiency are correlated"
+cor<-read.csv(file.choose(),sep=",",header = T)
+summary(cor)
+cor.test(cor$aptitude,cor$job_prof,alternative = "two.sided",method
+= "pearson")
+
+(F) T test for Variance
+Code:
+"t test for variance"
+var<-read.csv(file.choose(),sep=",",header = T)
+summary(var)
+var.test(var$time_g1,var$time_g2,alternative = "two.sided")
+
