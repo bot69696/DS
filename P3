@@ -1,0 +1,51 @@
+1.Simple linear regression
+CODE:
+"simple linear regression"
+house=read.csv(file.choose(),sep=",",header=T)
+reg1=lm(death_rate~hosp_avail,data=house)
+summary(reg1)
+plot(house$hosp_avail,house$death_rate)
+abline(reg1,col="red")
+plot(reg1)
+
+
+2.Multiple linear regression
+CODE:
+"multiple linear regression"
+house<-read.csv(file.choose(),sep=",",header=T)
+summary(house)
+names(house)
+pairs(~death_rate+doctor_avail+hosp_avail+annual_income+densi
+ty_per_capita, data=house)
+housemodel<-
+lm(density_per_capita~death_rate+doctor_avail+hosp_avail+annu
+al_income,data=house)
+summary(housemodel)
+
+3.Main jo aane waala hai
+CODE:
+index<-read.csv(file.choose(),sep=",", header = T)
+names(index)
+pairs(~index+written+language+tech+gk, data=index)
+model1<-lm(index~., data=index)
+summary(model1)
+index$pred<-fitted(model1)
+head(index)
+index$res<-residuals(model1)
+head(index)
+"to check the multicolinearity "
+library(car)
+vif(model1)
+"plot must be random indicates no heteroscedasticity"
+plot(index$pred, index$res,col="red")
+"errors are assumed to be normally destributed"
+shapiro.test(index$res)
+"detecting heteroscedasticity using ncvtest"
+library(car)
+ncvTest(model1,~written+language+tech+gk)
+"detecting autocorelation using derbin watson test d=2(1-r) "
+library(car)
+durbinWatsonTest(model1)
+"influence plot"
+influencePlot(model1)
+index<-index[-33,]
